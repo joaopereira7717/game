@@ -11,41 +11,41 @@ export class CreatecharacterComponent implements OnInit {
   ngOnInit(): void {}
 
   skillLimiter(
-    atk: HTMLInputElement,
-    int: HTMLInputElement,
-    lp: HTMLInputElement,
+    ataque: HTMLInputElement,
+    inteligencia: HTMLInputElement,
+    saude: HTMLInputElement,
     limit: HTMLElement
   ) {
     let limiter: number = 30;
 
-    limiter = limiter - parseInt(atk.value);
-    limiter = limiter - parseInt(int.value);
-    limiter = limiter - parseInt(lp.value);
+    limiter = limiter - parseInt(ataque.value);
+    limiter = limiter - parseInt(inteligencia.value);
+    limiter = limiter - parseInt(saude.value);
 
     if (limiter == 0) {
-      atk.max = atk.value;
-      int.max = int.value;
-      lp.max = lp.value;
+      ataque.max = ataque.value;
+      inteligencia.max = inteligencia.value;
+      saude.max = saude.value;
 
-      atk.value = atk.max;
-      int.value = int.max;
-      lp.value = lp.max;
+      ataque.value = ataque.max;
+      inteligencia.value = inteligencia.max;
+      saude.value = saude.max;
     } else if (limiter < 0) {
-      alert('Parece que passou o limite de skill points recebidos :(');
+      alert('Parece que passou o limite de skill pointeligencias recebidos :(');
 
-      atk.value = '10';
-      int.value = '10';
-      lp.value = '10';
+      ataque.value = '10';
+      inteligencia.value = '10';
+      saude.value = '10';
 
-      atk.max = '20';
-      int.max = '20';
-      lp.max = '20';
+      ataque.max = '20';
+      inteligencia.max = '20';
+      saude.max = '20';
 
       limiter = 0;
     } else {
-      atk.max = '20';
-      int.max = '20';
-      lp.max = '20';
+      ataque.max = '20';
+      inteligencia.max = '20';
+      saude.max = '20';
     }
 
     limit.innerText = limiter.toString();
