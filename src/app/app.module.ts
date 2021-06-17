@@ -9,6 +9,7 @@ import { CreatecharacterComponent } from './components/createcharacter/createcha
 import { CityComponent } from './components/city/city.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { Four0fourComponent } from './components/four0four/four0four.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { Four0fourComponent } from './components/four0four/four0four.component';
     ShopComponent,
     Four0fourComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
