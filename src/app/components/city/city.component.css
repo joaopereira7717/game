@@ -1,0 +1,32 @@
+.background {
+  background-image: url("../../../assets/img/city.png") !important;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.shop {
+  position: absolute;
+  left: 51%;
+  top: 731px;
+  border: none;
+  background-color: transparent;
+}
+
+.train {
+  position: absolute;
+  left: 81%;
+  top: 603px;
+  border: none;
+  background-color: transparent;
+}
+
+.fight {
+  position: absolute;
+  left: 27%;
+  top: 179px;
+  border: none;
+  background-color: transparent;
+}
