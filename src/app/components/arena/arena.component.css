@@ -1,0 +1,74 @@
+.background {
+  background-image: url("../../../assets/img/arena.png") !important;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.leftGuy {
+  position: absolute;
+  left: 25px;
+  bottom: 0;
+  animation-name: GuyStand;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.rightGuy {
+  position: absolute;
+  right: 30px;
+  bottom: 0;
+  animation-name: GuyStand;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.leftAtack {
+  animation-name: leftGuyAtack;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.rightAtack {
+  animation-name: rightGuyAtack;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes GuyStand {
+  0% {
+    bottom: 0px;
+  }
+  50% {
+    bottom: 50px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+
+@keyframes leftGuyAtack {
+  0% {
+    left: 25px;
+  }
+  50% {
+    left: 70%;
+  }
+  100% {
+    left: 25px;
+  }
+}
+
+@keyframes rightGuyAtack {
+  0% {
+    right: 25px;
+  }
+  50% {
+    right: 70%;
+  }
+  100% {
+    right: 25px;
+  }
+}
