@@ -1,0 +1,151 @@
+/* player card */
+
+.playerCard {
+  position: absolute;
+  top: 0;
+  left: 70%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: linear-gradient(
+    -45deg,
+    rgba(25, 171, 255, 0.75) 5%,
+    rgba(0, 183, 255, 0.75) 20%,
+    rgba(0, 132, 255, 0.75) 40%,
+    rgba(0, 60, 255, 0.75) 50%,
+    rgba(0, 17, 255, 0.75) 90%
+  );
+  width: 30%;
+  height: 20%;
+  clip-path: polygon(0 0, 100% 0%, 100% 65%, 30% 65%);
+}
+
+.playerCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  background: rgba(0, 0, 0, 0.75);
+  width: 95%;
+  height: 85%;
+  clip-path: polygon(0 0, 100% 0%, 100% 65%, 28% 65%);
+  z-index: -1;
+}
+
+.playerCard .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 25%;
+}
+
+/*  */
+
+.playerCard .top p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #ffe600;
+  font-family: var(--pixel);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1vw;
+  width: 45%;
+  height: 100%;
+  cursor: default;
+}
+
+.playerCard .top .img-container {
+  border-radius: 100%;
+  width: 10%;
+  height: 100%;
+  border: 2px solid white;
+}
+
+.playerCard .top .img-container:nth-last-of-type(1) {
+  border-radius: 0;
+  border: none;
+  width: 5%;
+  height: 60%;
+  cursor: pointer;
+}
+
+.playerCard .top .img-container img {
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+}
+
+.playerCard .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-left: 20%;
+  width: 80%;
+  height: 50%;
+}
+
+.playerCard .bottom .img-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 50%;
+}
+
+.playerCard .bottom .img-container img {
+  object-fit: fill;
+  width: 50%;
+  height: 100%;
+}
+
+.playerCard .bottom .img-container p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffe600;
+  font-family: var(--pixel);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1vw;
+  width: 50%;
+  height: 100%;
+  cursor: default;
+}
+
+/* all img that aren't the game map or player img */
+
+img:not(.not img) {
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* div that ain't the .not class / arrow animation*/
+
+div:not(.not):hover::before {
+  content: "";
+  position: absolute;
+  top: 85%;
+  left: 0;
+  background: rgb(255, 230, 0, 0.75);
+  width: 25%;
+  height: 25%;
+  clip-path: polygon(
+    45% 10%,
+    45% 35%,
+    100% 35%,
+    100% 65%,
+    45% 65%,
+    45% 90%,
+    0 50%
+  );
+  transform: rotate(140deg);
+  animation: indicatorTrain 750ms ease-in-out infinite forwards;
+}

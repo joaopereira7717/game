@@ -10,6 +10,11 @@ export class CreatecharacterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngAfterViewInit(): void {
+    (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
+      'none';
+  }
+
   skillLimit(
     ataque: HTMLInputElement,
     inteligencia: HTMLInputElement,

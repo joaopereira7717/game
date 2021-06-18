@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-four0four',
   templateUrl: './four0four.component.html',
-  styleUrls: ['./four0four.component.css']
+  styleUrls: ['./four0four.component.css'],
 })
 export class Four0fourComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
+      'none';
   }
-
 }

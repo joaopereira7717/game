@@ -10,6 +10,8 @@ import { CityComponent } from './components/city/city.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { Four0fourComponent } from './components/four0four/four0four.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthGuard } from './system/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
     CityComponent,
     ShopComponent,
     Four0fourComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

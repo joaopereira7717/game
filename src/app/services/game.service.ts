@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,8 @@ export class GameService {
     dataToSend.append('username', username);
     dataToSend.append('password', password);
 
+    localStorage.setItem('account', username);
+
     return this.http.post(this.linkLogin, dataToSend);
   }
 
@@ -30,6 +33,20 @@ export class GameService {
     dataToSend.append('username', username);
     dataToSend.append('password', password);
 
+    localStorage.setItem('account', username);
+
     return this.http.post(this.linkSignUp, dataToSend);
+  }
+
+  logout() {
+    localStorage.removeItem('account');
+  }
+
+  checkAuthentication() {
+    let account = localStorage.getItem('account');
+    if (account != null) {
+      return true;
+    }
+    return false;
   }
 }
