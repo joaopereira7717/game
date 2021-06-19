@@ -15,6 +15,10 @@
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
+.leftGuy.hit > img {
+  filter: invert(11%) sepia(90%) saturate(7255%) hue-rotate(9deg)
+    brightness(97%) contrast(120%);
+}
 
 .rightGuy {
   position: absolute;
@@ -23,6 +27,11 @@
   animation-name: GuyStand;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+}
+
+.rightGuy.hit > img {
+  filter: invert(11%) sepia(90%) saturate(7255%) hue-rotate(9deg)
+    brightness(97%) contrast(120%);
 }
 
 .leftAtack {

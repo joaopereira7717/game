@@ -12,6 +12,7 @@ import { Four0fourComponent } from './components/four0four/four0four.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuard } from './system/guard/auth.guard';
+import { TrainComponent } from './components/train/train.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthGuard } from './system/guard/auth.guard';
     ShopComponent,
     Four0fourComponent,
     NavbarComponent,
+    TrainComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [AuthGuard],

@@ -49,4 +49,12 @@ export class GameService {
     }
     return false;
   }
+
+  getCharById(): Observable<any> {
+    return this.http.get(this.linkCharId + '137');
+  }
+
+  getRandomChar(): Observable<any> {
+    return this.http.get(this.linkRndChar);
+  }
 }

@@ -1,30 +1,14 @@
-<div class="playerCard not">
-    <div class="top not">
-        <p id="user">Username</p>
+<div class="statsNav">
+    <label id="user">{{ players.Nome }}</label>
+    <img class="margin" src="../../../assets/img/atk.png" width="35px" height="35px">
+    <label class="margin" id="atk">{{ players.Atk }}</label>
+    <img class="margin" src="../../../assets/img/int.png" width="35px" height="35px">
+    <label class="margin" id="int">{{ players.Int }}</label>
+    <img class="margin" src="../../../assets/img/shield.png" width="35px" height="35px">
+    <label class="margin" id="lp">{{ players.Vida }}</label>
+    <img class="margin" (click)="logout()"
+        src="https://www.clipartmax.com/png/small/292-2924736_logout-icon-png-blue.png" width="35px" height="35px">
 
-        <div class="img-container not">
-            <img src="https://image.flaticon.com/icons/png/512/3135/3135715.png" alt="player profile">
-        </div>
 
-        <div class="img-container not">
-            <img (click)="logout()" src="https://www.clipartmax.com/png/small/292-2924736_logout-icon-png-blue.png">
-        </div>
-    </div>
 
-    <div class="bottom not">
-        <div class="img-container not">
-            <img src="../../../assets/img/atk.png">
-            <p id="atk">00</p>
-        </div>
-
-        <div class="img-container not">
-            <img src="../../../assets/img/int.png">
-            <p id="int">00</p>
-        </div>
-
-        <div class="img-container not">
-            <img src="../../../assets/img/shield.png">
-            <p id="lp">00</p>
-        </div>
-    </div>
 </div>
