@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-createcharacter',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./createcharacter.component.css'],
 })
 export class CreatecharacterComponent implements OnInit {
-  constructor() {}
+  constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -47,5 +49,31 @@ export class CreatecharacterComponent implements OnInit {
     ataque.max = inteligencia.max = saude.max = '15';
     ataque.value = inteligencia.value = saude.value = '0';
     ataque.disabled = inteligencia.disabled = saude.disabled = false;
+  }
+
+  createChar(
+    name: string,
+    ataque: string,
+    inteligencia: string,
+    saude: string,
+    username: string,
+    password: string
+  ) {
+    let objeto = {
+      name: name,
+      ataque: ataque,
+      inteligencia: inteligencia,
+      saude: saude,
+      username: username,
+      password: password,
+    };
+
+    this.gameService
+      .createChar(name, ataque, inteligencia, saude, username, password)
+      .subscribe((data) => {
+        let codigo = data;
+        alert('Criado Com Sucesso!');
+        this.router.navigateByUrl('/home');
+      });
   }
 }

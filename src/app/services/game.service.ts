@@ -115,4 +115,24 @@ export class GameService {
 
     return this.http.post(this.linkCreateWeapon, formData);
   }
+
+  createChar(
+    name: string,
+    ataque: string,
+    inteligencia: string,
+    saude: string,
+    username: string,
+    password: string
+  ) {
+    const formData: FormData = new FormData();
+    formData.append('name', name);
+    formData.append('atk', ataque);
+    formData.append('isMonster', 'false');
+    formData.append('int', inteligencia);
+    formData.append('vida', saude);
+    formData.append('username', username);
+    formData.append('password', password);
+
+    return this.http.post(this.linkCreateChar, formData);
+  }
 }
