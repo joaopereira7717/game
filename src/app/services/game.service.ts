@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { Player } from '../system/interfaces/player';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,7 @@ export class GameService {
     dataToSend.append('password', password);
 
     localStorage.setItem('account', username);
+    localStorage.setItem('password', password);
 
     return this.http.post(this.linkLogin, dataToSend);
   }
@@ -34,12 +36,15 @@ export class GameService {
     dataToSend.append('password', password);
 
     localStorage.setItem('account', username);
+    localStorage.setItem('password', password);
 
     return this.http.post(this.linkSignUp, dataToSend);
   }
 
   logout() {
     localStorage.removeItem('account');
+    localStorage.removeItem('password');
+    localStorage.removeItem('id');
   }
 
   checkAuthentication() {
@@ -51,10 +56,36 @@ export class GameService {
   }
 
   getCharById(): Observable<any> {
-    return this.http.get(this.linkCharId + '137');
+    return this.http.get(this.linkCharId + localStorage.getItem('id'));
   }
 
   getRandomChar(): Observable<any> {
     return this.http.get(this.linkRndChar);
+  }
+  // update character
+  updateStats(player: any) {
+    const formData: FormData = new FormData();
+    formData.append('name', player.Nome);
+    formData.append('idChar', player.ID);
+    formData.append('atk', player.Atk);
+    formData.append('isMonster', 'false');
+    formData.append('int', player.Int);
+    formData.append('vida', player.Vida);
+
+    let account: any = {
+      username: localStorage.getItem('account'),
+      password: localStorage.getItem('password'),
+    };
+
+    formData.append('username', account.username);
+    formData.append('password', account.password);
+
+    return this.http
+      .post(this.linkUpdateChar, formData)
+      .toPromise()
+      .then()
+      .catch((err) => {
+        return Promise.reject(err.error || 'Server error');
+      });
   }
 }

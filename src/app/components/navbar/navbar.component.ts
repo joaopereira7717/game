@@ -15,6 +15,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCharById();
+    setInterval(() => {
+      this.getCharById();
+    }, 5000);
   }
 
   logout() {

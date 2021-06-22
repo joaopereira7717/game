@@ -8,13 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  data: any;
   constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  login(username: string, password: string) {
-    this.gameService.logIn(username, password).subscribe((data) => {
-      console.log(data);
+  login(username: string, password: string): void {
+    this.gameService.logIn(username, password).subscribe((response) => {
+      this.data = response;
+      localStorage.setItem('id', this.data.data);
       this.router.navigateByUrl('city');
     });
   }

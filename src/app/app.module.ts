@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +28,7 @@ import { TrainComponent } from './components/train/train.component';
     TrainComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [AuthGuard],
+  providers: [AuthGuard, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

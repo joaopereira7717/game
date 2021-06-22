@@ -1,0 +1,69 @@
+.background {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 10px 0;
+  background: rgb(64, 129, 252);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(64, 129, 252, 1) 0%,
+    rgba(141, 68, 254, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(64, 129, 252, 1) 0%,
+    rgba(141, 68, 254, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(64, 129, 252, 1) 0%,
+    rgba(141, 68, 254, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4081fc",endColorstr="#8d44fe",GradientType=1);
+}
+
+.row {
+  width: 100%;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.row div {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  margin: 50px;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.row div label {
+  display: flex;
+  font-size: 30px;
+  color: #fff;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: -60px;
+}
+
+.row div:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.brain {
+  background-image: url("../../../assets/img/train/inteligencia.gif") !important;
+}
+
+.attack {
+  background-image: url("../../../assets/img/train/ataque.gif") !important;
+}
+
+.health {
+  background-image: url("../../../assets/img/train/saude.gif") !important;
+}
