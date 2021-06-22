@@ -16,7 +16,7 @@ export class GameService {
   linkCharId = 'http://moreiramoises.pt/server/apis/get/getChar.php?PlayerID=';
   linkRndChar = 'http://moreiramoises.pt/server/apis/get/getRandomChar.php?';
   linkUpdateChar = 'http://moreiramoises.pt/server/apis/updateChart.php';
-
+  linkCreateWeapon = 'http://moreiramoises.pt/server/apis/createArma.php';
   logIn(username: string, password: string) {
     let dataToSend: FormData = new FormData();
 
@@ -87,5 +87,32 @@ export class GameService {
       .catch((err) => {
         return Promise.reject(err.error || 'Server error');
       });
+  }
+
+  createWeapon(
+    name: string,
+    atk: string,
+    durabilidade: string,
+    tipoArma: string,
+    vida: string
+  ) {
+    const formData: FormData = new FormData();
+    formData.append('name', name);
+    formData.append('atk', atk);
+    formData.append('durabilidade', durabilidade);
+    formData.append('tipoDeArma', tipoArma);
+    formData.append('vida', vida);
+
+    let account: any = {
+      username: localStorage.getItem('account'),
+      password: localStorage.getItem('password'),
+      id: localStorage.getItem('id'),
+    };
+
+    formData.append('username', account.username);
+    formData.append('password', account.password);
+    formData.append('idPersonagem', account.id);
+
+    return this.http.post(this.linkCreateWeapon, formData);
   }
 }

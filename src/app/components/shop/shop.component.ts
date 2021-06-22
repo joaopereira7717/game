@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-shop',
@@ -6,12 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent implements OnInit {
-  constructor() {}
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
       'none';
+  }
+
+  criarArma(
+    name: string,
+    atk: string,
+    durabilidade: string,
+    tipoArma: string,
+    vida: string
+  ) {
+    this.gameService
+      .createWeapon(name, atk, durabilidade, tipoArma, vida)
+      .subscribe((data) => console.log(data));
   }
 }
