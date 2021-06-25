@@ -37,10 +37,7 @@ export class ArenaComponent implements OnInit {
     }, 1000);
   }
 
-  ngAfterViewInit(): void {
-    (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
-      'none';
-  }
+  ngAfterViewInit(): void {}
 
   getCharById() {
     this.gameService
@@ -60,7 +57,12 @@ export class ArenaComponent implements OnInit {
     });
   }
 
-  batalha(left: HTMLElement, right: HTMLElement) {
+  batalha(
+    left: HTMLElement,
+    right: HTMLElement,
+    acertou: HTMLElement,
+    falhou: HTMLElement
+  ) {
     let isDead = false;
     let interval = setInterval(() => {
       let didHit = this.getRndNum();
@@ -74,6 +76,17 @@ export class ArenaComponent implements OnInit {
         );
         right.classList.add('rightAtack');
         left.classList.add('hit');
+        if (didDamage > 0) {
+          acertou.style.display = 'block';
+          setTimeout(() => {
+            acertou.style.display = 'none';
+          }, 1500);
+        } else {
+          falhou.style.display = 'block';
+          setTimeout(() => {
+            falhou.style.display = 'none';
+          }, 1500);
+        }
         setTimeout(() => {
           right.classList.remove('rightAtack');
           left.classList.remove('hit');
@@ -82,13 +95,24 @@ export class ArenaComponent implements OnInit {
           this.vidaPercentagem1 = 0;
           isDead = true;
           left.style.display = 'none';
-          alert('Perdeu!');
+          alert('Perdeu! RIP!');
         }
       } else {
         this.vidaAtual2 = this.vidaAtual2 - didDamage;
         this.vidaPercentagem2 = (this.vidaAtual2 / this.player1.Vida) * 100;
         left.classList.add('leftAtack');
         right.classList.add('hit');
+        if ((didDamage = 0)) {
+          acertou.style.display = 'block';
+          setTimeout(() => {
+            acertou.style.display = 'none';
+          }, 1500);
+        } else {
+          falhou.style.display = 'block';
+          setTimeout(() => {
+            falhou.style.display = 'none';
+          }, 1500);
+        }
         setTimeout(() => {
           left.classList.remove('leftAtack');
           right.classList.remove('hit');
@@ -104,11 +128,10 @@ export class ArenaComponent implements OnInit {
       if (isDead) {
         clearInterval(interval);
         setTimeout(() => {
-          alert('FIM DO JOGO');
           this.router.navigateByUrl('/city');
         }, 1000);
       }
-    }, 2000);
+    }, 1500);
   }
 
   getRndNum() {

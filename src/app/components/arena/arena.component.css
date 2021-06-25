@@ -46,6 +46,20 @@
   animation-iteration-count: infinite;
 }
 
+.acertou {
+  color: white;
+  font-weight: bolder;
+  font-size: 45px;
+  display: none;
+}
+
+.falhou {
+  color: white;
+  font-weight: bolder;
+  font-size: 45px;
+  display: none;
+}
+
 @keyframes GuyStand {
   0% {
     bottom: 0px;

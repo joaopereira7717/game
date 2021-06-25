@@ -55,9 +55,9 @@ export class GameService {
   checkAuthentication() {
     let account = localStorage.getItem('account');
     if (account != null) {
-      return true;
+      return true; //se existir conta na localstora retorna true
     }
-    return false;
+    return false; //se não retorna false
   }
 
   getCharById(): Observable<any> {
