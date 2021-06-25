@@ -120,7 +120,12 @@ export class ArenaComponent implements OnInit {
     console.log(this.armaPlayer.data.Armas[0].Atk);
     let danoArma = this.armaPlayer.data.Armas[0].Atk;
     let damage: number = player.Atk;
-    let danoTotal = danoArma + damage;
+    let danoTotal = damage;
+
+    if (danoArma != undefined) {
+      danoTotal += danoArma;
+    }
+
     if (didHit >= 4) {
       return (danoTotal *= didHit / 10);
     } else {
