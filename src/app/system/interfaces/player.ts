@@ -5,7 +5,7 @@ export class Player {
   public IsMonset: Boolean;
   public Int: Number;
   public Vida: Number;
-  public ID_Player: Number;
+  public ID_Player: number;
 
   constructor(
     Id: string,

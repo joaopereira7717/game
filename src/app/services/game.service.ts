@@ -17,6 +17,11 @@ export class GameService {
   linkRndChar = 'http://moreiramoises.pt/server/apis/get/getRandomChar.php?';
   linkUpdateChar = 'http://moreiramoises.pt/server/apis/updateChart.php';
   linkCreateWeapon = 'http://moreiramoises.pt/server/apis/createArma.php';
+  linkRandomWeapon =
+    'http://moreiramoises.pt/server/apis/get/getRandomArma.php';
+  linkGetWeaponByIdPlayer =
+    'http://moreiramoises.pt/server/apis/get/getArma.php?IDPersonagem=';
+
   logIn(username: string, password: string) {
     let dataToSend: FormData = new FormData();
 
@@ -134,5 +139,13 @@ export class GameService {
     formData.append('password', password);
 
     return this.http.post(this.linkCreateChar, formData);
+  }
+
+  getRandomWeapon(): Observable<any> {
+    return this.http.get(this.linkRandomWeapon);
+  }
+
+  getWeaponByPlayerID(id: number) {
+    return this.http.get(this.linkGetWeaponByIdPlayer + id);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 import { Player } from 'src/app/system/interfaces/player';
 
@@ -14,8 +15,9 @@ export class ArenaComponent implements OnInit {
   vidaAtual2!: Number | any;
   vidaPercentagem1!: Number | any;
   vidaPercentagem2!: Number | any;
+  armaPlayer: any;
 
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameService, private router: Router) {
     this.vidaPercentagem1 = 1;
     this.vidaPercentagem2 = 1;
   }
@@ -52,6 +54,12 @@ export class ArenaComponent implements OnInit {
       .subscribe((player) => (this.player1 = player.data));
   }
 
+  getWeaponByPlayerID(id: number) {
+    this.gameService.getWeaponByPlayerID(id).subscribe((data) => {
+      this.armaPlayer = data;
+    });
+  }
+
   batalha(left: HTMLElement, right: HTMLElement) {
     let isDead = false;
     let interval = setInterval(() => {
@@ -74,6 +82,7 @@ export class ArenaComponent implements OnInit {
           this.vidaPercentagem1 = 0;
           isDead = true;
           left.style.display = 'none';
+          alert('Perdeu!');
         }
       } else {
         this.vidaAtual2 = this.vidaAtual2 - didDamage;
@@ -88,6 +97,7 @@ export class ArenaComponent implements OnInit {
           this.vidaPercentagem2 = 0;
           isDead = true;
           right.style.display = 'none';
+          alert('Ganhou!');
         }
       }
 
@@ -95,6 +105,7 @@ export class ArenaComponent implements OnInit {
         clearInterval(interval);
         setTimeout(() => {
           alert('FIM DO JOGO');
+          this.router.navigateByUrl('/city');
         }, 1000);
       }
     }, 2000);
@@ -105,11 +116,15 @@ export class ArenaComponent implements OnInit {
   }
 
   hitMiss(didHit: number, player: Player): number {
+    this.getWeaponByPlayerID(player.ID_Player);
+    console.log(this.armaPlayer.data.Armas[0].Atk);
+    let danoArma = this.armaPlayer.data.Armas[0].Atk;
     let damage: number = player.Atk;
+    let danoTotal = danoArma + damage;
     if (didHit >= 4) {
-      return (damage *= didHit / 10);
+      return (danoTotal *= didHit / 10);
     } else {
-      return (damage = 0);
+      return (danoTotal = 0);
     }
   }
 }

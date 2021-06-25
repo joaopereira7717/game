@@ -9,6 +9,8 @@ import { GameService } from 'src/app/services/game.service';
 export class ShopComponent implements OnInit {
   constructor(private gameService: GameService) {}
 
+  armaShop: any;
+
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
@@ -26,5 +28,11 @@ export class ShopComponent implements OnInit {
     this.gameService
       .createWeapon(name, atk, durabilidade, tipoArma, vida)
       .subscribe((data) => console.log(data));
+  }
+
+  getRandomWep() {
+    this.gameService.getRandomWeapon().subscribe((data) => {
+      this.armaShop = data;
+    });
   }
 }

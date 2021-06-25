@@ -5,9 +5,13 @@
     <button class="btn btn-primary" [routerLink]="[ '/city']">Back to City</button>
 
     <!-- Button trigger modal -->
-    <div class="position-absolute top-50 start-50 translate-middle"><button type="button" class="btn btn-primary"
-            data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Forjar Arma
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ComprarModal"
+            (click)="getRandomWep()">
+            Comprar Arma
         </button>
     </div>
 
@@ -15,6 +19,33 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Forjar Arma</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input #name type="text" class="form-control" placeholder="Nome da Arma" value="" />
+                <label>Ataque: <span class="text-muted">({{atk.value}})</span></label>
+                <input #atk class="slider" style="width: 100%;" type="range" min="0" max="10" value="0">
+                <label>Durabilidade: <span class="text-muted">({{durabilidade.value}})</span></label>
+                <input #durabilidade class="slider" style="width: 100%;" type="range" min="0" max="10" value="0">
+                <input #tipoArma type="text" class="form-control" placeholder="Tipo de Arma" value="" />
+                <label>Vida: <span class="text-muted">({{vida.value}})</span></label>
+                <input #vida class="slider" style="width: 100%;" type="range" min="0" max="10" value="0">
+            </div>
+            <div class=" modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="criarArma(name.value, atk.value, durabilidade.value, tipoArma.value, vida.value)">Forjar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ComprarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
