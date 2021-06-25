@@ -15,7 +15,7 @@ export class TrainComponent implements OnInit {
     private gameService: GameService,
     private cookieService: CookieService
   ) {}
-
+  //vai buscar o char pelo id
   getCharById() {
     this.gameService
       .getCharById()
@@ -25,7 +25,7 @@ export class TrainComponent implements OnInit {
   ngOnInit(): void {
     this.getCharById();
   }
-
+  //parar o treino
   stopTrain(
     element1: HTMLElement,
     element2: HTMLElement,
@@ -43,7 +43,7 @@ export class TrainComponent implements OnInit {
     }, 5000);
   }
 
-  // just run once per day using function above
+  // treinar
   train(
     type: string,
     brain: HTMLElement,
@@ -56,6 +56,7 @@ export class TrainComponent implements OnInit {
     }
     if (type == null) return;
     if (type == 'brain') {
+      //esconde os dois
       attack.style.opacity = '0';
       health.style.opacity = '0';
       this.stopTrain(attack, health, brain, null);
@@ -63,6 +64,7 @@ export class TrainComponent implements OnInit {
     } else if (type == 'attack') {
       brain.style.opacity = '0';
       health.style.opacity = '0';
+      //adiciona animações
       attack.style.transform = 'translate(25em, 0)';
       this.stopTrain(brain, health, attack, 'translate(0em, 0)');
       this.players.Atk++;

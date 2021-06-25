@@ -13,10 +13,11 @@ export class CreatecharacterComponent implements OnInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    //resolução de bug que a modal nao fechava
     (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
       'none';
   }
-
+  //limitador de skill, para que juntos nao ultrapassem os 30 pontos
   skillLimit(
     ataque: HTMLInputElement,
     inteligencia: HTMLInputElement,
@@ -40,7 +41,7 @@ export class CreatecharacterComponent implements OnInit {
     }
     limit.innerText = maximo.toString();
   }
-
+  //limpar as skills e resolução de bug
   clearSkills(
     ataque: HTMLInputElement,
     inteligencia: HTMLInputElement,
@@ -50,7 +51,7 @@ export class CreatecharacterComponent implements OnInit {
     ataque.value = inteligencia.value = saude.value = '0';
     ataque.disabled = inteligencia.disabled = saude.disabled = false;
   }
-
+  //criar char
   createChar(
     name: string,
     ataque: string,
@@ -73,7 +74,7 @@ export class CreatecharacterComponent implements OnInit {
       .subscribe((data) => {
         let codigo = data;
         alert('Criado Com Sucesso!');
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/home'); //redireciona para a homepage
       });
   }
 }

@@ -22,6 +22,7 @@ export class GameService {
   linkGetWeaponByIdPlayer =
     'http://moreiramoises.pt/server/apis/get/getArma.php?IDPersonagem=';
 
+  //login
   logIn(username: string, password: string) {
     let dataToSend: FormData = new FormData();
 
@@ -33,7 +34,7 @@ export class GameService {
 
     return this.http.post(this.linkLogin, dataToSend);
   }
-
+  //registar
   signIn(username: string, password: string) {
     let dataToSend: FormData = new FormData();
 
@@ -45,25 +46,25 @@ export class GameService {
 
     return this.http.post(this.linkSignUp, dataToSend);
   }
-
+  //logout
   logout() {
     localStorage.removeItem('account');
     localStorage.removeItem('password');
     localStorage.removeItem('id');
   }
-
+  //verificar se está conectado
   checkAuthentication() {
     let account = localStorage.getItem('account');
     if (account != null) {
-      return true; //se existir conta na localstora retorna true
+      return true; //se existir conta na localstorage retorna true
     }
     return false; //se não retorna false
   }
-
+  //ir buscar o char pelo id
   getCharById(): Observable<any> {
     return this.http.get(this.linkCharId + localStorage.getItem('id'));
   }
-
+  //ir buscar um random
   getRandomChar(): Observable<any> {
     return this.http.get(this.linkRndChar);
   }
@@ -84,7 +85,7 @@ export class GameService {
 
     formData.append('username', account.username);
     formData.append('password', account.password);
-
+    //unica forma que arranjei atravez de pesquisa para resolver um bug que tinha
     return this.http
       .post(this.linkUpdateChar, formData)
       .toPromise()
@@ -93,7 +94,7 @@ export class GameService {
         return Promise.reject(err.error || 'Server error');
       });
   }
-
+  //criar arma
   createWeapon(
     name: string,
     atk: string,
@@ -120,7 +121,7 @@ export class GameService {
 
     return this.http.post(this.linkCreateWeapon, formData);
   }
-
+  //criar character
   createChar(
     name: string,
     ataque: string,
@@ -140,11 +141,7 @@ export class GameService {
 
     return this.http.post(this.linkCreateChar, formData);
   }
-
-  getRandomWeapon(): Observable<any> {
-    return this.http.get(this.linkRandomWeapon);
-  }
-
+  //ir buscar as armas do player
   getWeaponByPlayerID(id: number) {
     return this.http.get(this.linkGetWeaponByIdPlayer + id);
   }

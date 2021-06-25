@@ -11,6 +11,7 @@ export class CityComponent implements OnInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    //resolução de um bug que tinha na modal
     (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
       'none';
   }

@@ -17,7 +17,7 @@ export class ShopComponent implements OnInit {
     (document.querySelector('.modal-backdrop') as HTMLElement).style.display =
       'none';
   }
-
+  //forjar arma
   criarArma(
     name: string,
     atk: string,
@@ -28,11 +28,5 @@ export class ShopComponent implements OnInit {
     this.gameService
       .createWeapon(name, atk, durabilidade, tipoArma, vida)
       .subscribe((data) => console.log(data));
-  }
-
-  getRandomWep() {
-    this.gameService.getRandomWeapon().subscribe((data) => {
-      this.armaShop = data;
-    });
   }
 }

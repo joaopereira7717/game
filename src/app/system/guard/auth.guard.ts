@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private gameservice: GameService) {}
 
   async checkUserAuthenticated() {
+    //verifica se está autenticado
     var response = await this.gameservice.checkAuthentication();
     this.authenticated = response;
   }
